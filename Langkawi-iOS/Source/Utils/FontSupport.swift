@@ -28,7 +28,7 @@ extension UILabel {
         label.font = UIFont.fontAwesome(type: type, size: size)
         label.text = name
         label.textColor = color
-        label.textAlignment = .center
+        label.bounds.size = label.intrinsicContentSize
         return label
     }
 }

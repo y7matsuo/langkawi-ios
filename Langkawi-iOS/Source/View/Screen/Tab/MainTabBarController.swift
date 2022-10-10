@@ -55,7 +55,7 @@ class MainTabBarController: UITabBarController {
     
     private func layoutTabBar() {
         let border = UIView()
-        border.backgroundColor = .lightGray
+        border.backgroundColor = ColorDef.appBar
         
         tabBar.addSubviewForAutoLayout(border)
         

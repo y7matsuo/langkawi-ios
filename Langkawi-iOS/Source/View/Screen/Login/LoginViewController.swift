@@ -69,7 +69,7 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
         self.passwordTextField = passwordTextField
         
         // TODO: 削除
-        emailTextField.text = "shirly.robel@hamill.co"
+        emailTextField.text = "jerold@adams.co"
         passwordTextField.text = "12345"
     }
     
