@@ -30,6 +30,7 @@ class AccountViewController: BaseViewController {
     private func layoutNavigationBar() {
         navigationItem.title = LabelDef.account
         navigationItem.backButtonTitle = LabelDef.back
+        addMenuButton()
         layoutNavigationBarBorder()
     }
     

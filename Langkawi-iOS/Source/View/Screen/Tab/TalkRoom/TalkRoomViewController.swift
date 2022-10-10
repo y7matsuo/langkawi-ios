@@ -28,6 +28,7 @@ class TalkRoomViewController: BaseViewController {
     private func layoutNavigationBar() {
         navigationItem.title = LabelDef.talkRoom
         navigationItem.backButtonTitle = LabelDef.back
+        addMenuButton()
         layoutNavigationBarBorder()
     }
     

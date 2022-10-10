@@ -19,6 +19,7 @@ class FindViewController: BaseViewController {
     private func layoutNavigationBar() {
         navigationItem.title = LabelDef.find
         navigationItem.backButtonTitle = LabelDef.back
+        addMenuButton()
         layoutNavigationBarBorder()
     }
     
