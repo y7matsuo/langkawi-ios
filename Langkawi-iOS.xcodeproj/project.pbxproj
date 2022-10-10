@@ -10,6 +10,9 @@
 		0BED73361B9D646C72AEBA32 /* Pods_Langkawi_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CC005C4FF07741F899D93DE /* Pods_Langkawi_iOS.framework */; };
 		22766530167464AAE58F52BC /* Pods_Langkawi_iOS_Langkawi_iOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DE3C9EB39E9A0854524CD91 /* Pods_Langkawi_iOS_Langkawi_iOSUITests.framework */; };
 		5EBB9657A979975C0394BBE7 /* Pods_Langkawi_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93921279D7228086E98E29B4 /* Pods_Langkawi_iOSTests.framework */; };
+		6F83FC4B28F2EDBE0060FD0A /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F83FC4A28F2EDBE0060FD0A /* MenuViewController.swift */; };
+		6F83FC4F28F3B8C40060FD0A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F83FC4E28F3B8C40060FD0A /* MainViewController.swift */; };
+		6F83FC5128F41AFA0060FD0A /* ColorDef.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F83FC5028F41AFA0060FD0A /* ColorDef.swift */; };
 		CB55F89D28E6798000D3056C /* TalkRoomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB55F89C28E6798000D3056C /* TalkRoomCell.swift */; };
 		CB55F89F28E6996C00D3056C /* ModelSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB55F89E28E6996C00D3056C /* ModelSupport.swift */; };
 		CB668E0928DA943800A512B7 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB668E0828DA943800A512B7 /* UserDetailViewController.swift */; };
@@ -166,6 +169,9 @@
 		0FB5074A2A7DFD8D6B587B9A /* Pods-Langkawi-iOS-Langkawi-iOSUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Langkawi-iOS-Langkawi-iOSUITests.release.xcconfig"; path = "Target Support Files/Pods-Langkawi-iOS-Langkawi-iOSUITests/Pods-Langkawi-iOS-Langkawi-iOSUITests.release.xcconfig"; sourceTree = "<group>"; };
 		2CC005C4FF07741F899D93DE /* Pods_Langkawi_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Langkawi_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DE3C9EB39E9A0854524CD91 /* Pods_Langkawi_iOS_Langkawi_iOSUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Langkawi_iOS_Langkawi_iOSUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F83FC4A28F2EDBE0060FD0A /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		6F83FC4E28F3B8C40060FD0A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		6F83FC5028F41AFA0060FD0A /* ColorDef.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorDef.swift; sourceTree = "<group>"; };
 		780788BFDD664249FFF35486 /* Pods-Langkawi-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Langkawi-iOS.debug.xcconfig"; path = "Target Support Files/Pods-Langkawi-iOS/Pods-Langkawi-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		7EE08198AA45B70B46AF5D20 /* Pods-Langkawi-iOS-Langkawi-iOSUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Langkawi-iOS-Langkawi-iOSUITests.debug.xcconfig"; path = "Target Support Files/Pods-Langkawi-iOS-Langkawi-iOSUITests/Pods-Langkawi-iOS-Langkawi-iOSUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		9090AA68838BCBBB7673B2F7 /* Pods-Langkawi-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Langkawi-iOS.release.xcconfig"; path = "Target Support Files/Pods-Langkawi-iOS/Pods-Langkawi-iOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -291,6 +297,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6F83FC4228F2ED9E0060FD0A /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				6F83FC4A28F2EDBE0060FD0A /* MenuViewController.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
 		C812A51B9D5A4810B22E4992 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -410,9 +424,9 @@
 				CBE8326A28CC31DA00D8E953 /* Pods-Langkawi-iOS */,
 				CBE8326C28CC31DA00D8E953 /* Pods-Langkawi-iOS-Langkawi-iOSUITests */,
 				CBE8326E28CC31DA00D8E953 /* Pods-Langkawi-iOSTests */,
-				CBE832B128CC86D300D8E953 /* Realm */,
+				CBE832B128CC86D300D8E953 /* Realm.framework */,
 				CBE832B328CC86D300D8E953 /* RealmSwift */,
-				CBE8327028CC31DA00D8E953 /* Swinject */,
+				CBE8327028CC31DA00D8E953 /* Swinject.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -436,6 +450,7 @@
 		CBE8327428CC38BB00D8E953 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				6F83FC5028F41AFA0060FD0A /* ColorDef.swift */,
 				CBE8327528CC38BB00D8E953 /* DialogManager.swift */,
 				CBE8327728CC38BB00D8E953 /* FontSupport.swift */,
 				CBE8327828CC38BB00D8E953 /* LabelDef.swift */,
@@ -497,8 +512,9 @@
 		CBE8328228CC38BB00D8E953 /* Screen */ = {
 			isa = PBXGroup;
 			children = (
-				CBE832C028CEA47300D8E953 /* MainTabBarController.swift */,
+				6F83FC4E28F3B8C40060FD0A /* MainViewController.swift */,
 				CBE8328428CC38BB00D8E953 /* Login */,
+				6F83FC4228F2ED9E0060FD0A /* Menu */,
 				CBE8330228D9981400D8E953 /* PositionStatusUsers */,
 				CBE832C328D1584600D8E953 /* Tab */,
 				CB668E0028DA941B00A512B7 /* UserDetail */,
@@ -570,6 +586,7 @@
 		CBE832C328D1584600D8E953 /* Tab */ = {
 			isa = PBXGroup;
 			children = (
+				CBE832C028CEA47300D8E953 /* MainTabBarController.swift */,
 				CB668E0E28DC521B00A512B7 /* Account */,
 				CBE832C428D158AF00D8E953 /* Find */,
 				CBE832C228CEA4DA00D8E953 /* Home */,
@@ -784,18 +801,16 @@
 			remoteRef = CBE8326D28CC31DA00D8E953 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		CBE8327028CC31DA00D8E953 /* Swinject */ = {
+		CBE8327028CC31DA00D8E953 /* Swinject.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = Swinject;
 			path = Swinject.framework;
 			remoteRef = CBE8326F28CC31DA00D8E953 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		CBE832B128CC86D300D8E953 /* Realm */ = {
+		CBE832B128CC86D300D8E953 /* Realm.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = Realm;
 			path = Realm.framework;
 			remoteRef = CBE832B028CC86D300D8E953 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
@@ -977,6 +992,7 @@
 				CBE832C628D158BE00D8E953 /* UsersViewController.swift in Sources */,
 				CBE832C928D1625500D8E953 /* UserCell.swift in Sources */,
 				CB668E2028E2D6F100A512B7 /* DescriptionEditViewController.swift in Sources */,
+				6F83FC4F28F3B8C40060FD0A /* MainViewController.swift in Sources */,
 				CB668E2828E66A6000A512B7 /* TalkRoomsResponse.swift in Sources */,
 				CB668E1728E26DE400A512B7 /* NameEditViewModel.swift in Sources */,
 				CBE8328F28CC38BB00D8E953 /* FontSupport.swift in Sources */,
@@ -998,6 +1014,7 @@
 				CBE832E828D697B000D8E953 /* RelationStatus.swift in Sources */,
 				CBE8328E28CC38BB00D8E953 /* SwinjectManager.swift in Sources */,
 				CBE832E628D321B300D8E953 /* UseEffectSupport.swift in Sources */,
+				6F83FC5128F41AFA0060FD0A /* ColorDef.swift in Sources */,
 				CBE8329A28CC38BB00D8E953 /* Errors.swift in Sources */,
 				CBE8329828CC38BB00D8E953 /* BaseAPI.swift in Sources */,
 				CBE8329628CC38BB00D8E953 /* HomeViewController.swift in Sources */,
@@ -1006,6 +1023,7 @@
 				CB668E1A28E278F800A512B7 /* PickerViewDialog.swift in Sources */,
 				CBE832FF28D955AB00D8E953 /* FindViewController.swift in Sources */,
 				CBE8329328CC38BB00D8E953 /* SuccessResponse.swift in Sources */,
+				6F83FC4B28F2EDBE0060FD0A /* MenuViewController.swift in Sources */,
 				CBE832B928CD78C500D8E953 /* RequestAdaptors.swift in Sources */,
 				CBE8329728CC38BB00D8E953 /* LoginViewController.swift in Sources */,
 				CBE832D828D1A7E700D8E953 /* ImageUrl.swift in Sources */,
