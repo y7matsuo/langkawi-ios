@@ -20,6 +20,7 @@ class HomeViewController: BaseViewController {
     private func layoutNavigationBar() {
         navigationItem.title = LabelDef.home
         navigationItem.backButtonTitle = LabelDef.back
+        addMenuButton()
         layoutNavigationBarBorder()
     }
     
@@ -75,4 +76,3 @@ class HomeViewController: BaseViewController {
         }
     }
 }
-
