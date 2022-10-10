@@ -49,3 +49,53 @@ extension UIViewController {
         ])
     }
 }
+
+extension UIViewController {
+    
+    func addMenuButton() {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+            image: UILabel.fontAwesome(type: .solid, name: "bars", color: .black, size: 20).toImage() ?? UIImage(),
+            style: .plain,
+            target: self,
+            action: #selector(self.onTapMenuButton(_:))
+        )
+        navigationItem.leftBarButtonItem?.tintColor = .black
+        setScreenEdgePanGestureRecognizerForMenu()
+    }
+    
+    private func setScreenEdgePanGestureRecognizerForMenu() {
+        let recognizer = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(self.onScreenEdgePanGestureForMenu(_:)))
+        recognizer.edges = .left
+        view.addGestureRecognizer(recognizer)
+    }
+    
+    @objc private func onTapMenuButton(_ sender: UIBarButtonItem) {
+        showMenuView()
+    }
+    
+    @objc private func onScreenEdgePanGestureForMenu(_ sender: UIScreenEdgePanGestureRecognizer) {
+        let translation = sender.translation(in: self.view)
+        
+        if sender.state == .began && translation.x > 0 {
+            showMenuView()
+        }
+    }
+    
+    private func showMenuView() {
+        guard let vc = resolveMainViewController() else {
+            return
+        }
+        vc.showMenu()
+    }
+    
+    private func resolveMainViewController() -> MainViewController? {
+        var vc: UIViewController? = self
+        repeat {
+            if let menuShowable = vc as? MainViewController {
+                return menuShowable
+            }
+            vc = vc?.parent
+        } while vc != nil
+        return nil
+    }
+}
