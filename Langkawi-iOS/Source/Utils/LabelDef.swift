@@ -14,10 +14,12 @@ class LabelDef {
     static let back = "戻る"
     
     static let login = "ログイン"
+    static let logout = "ログアウト"
     static let email = "メールアドレス"
     static let password = "パスワード"
     static let home = "ホーム"
     static let find = "見つける"
+    static let article = "特集記事"
     static let account = "アカウント"
     static let male = "男性"
     static let female = "女性"
