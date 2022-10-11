@@ -14,7 +14,6 @@ class LoginViewModel: SwinjectSupport {
     lazy var loginAPI = resolveInstance(LoginAPI.self)
     
     func loginCompletion(response: LoginResponse) {
-        LoginTokenManager.storeToken(token: response.token)
-        LoginTokenManager.storeLoginUserId(userId: response.userId)
+        LoginSessionManager.storeSession(token: response.token, userId: response.userId)
     }
 }

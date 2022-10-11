@@ -7,9 +7,10 @@
 
 import UIKit
 
-class MenuViewController: UIViewController {
+class MenuViewController: UIViewController, MenuViewProtocol {
     var beforeShow: (() -> Void)?
     var afterResign: (() -> Void)?
+    var presenter: MenuPresentation?
     
     private var contentRatio: CGFloat? {
         didSet {
@@ -48,14 +49,26 @@ class MenuViewController: UIViewController {
             sub.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -window.safeAreaInsets.bottom)
         ])
         
-        layoutContent(view: sub)
+        layoutContent(parent: sub)
     }
     
-    private func layoutContent(view: UIView) {
-        layoutRow(view: view, topAnchor: view.topAnchor, title: LabelDef.login, showBottomBorder: true) { [weak self] in
-            let vc = LoginViewController()
-            vc.modalPresentationStyle = .fullScreen
-            self?.present(vc, animated: true)
+    private func layoutContent(parent: UIView) {
+        guard let presenter = presenter else {
+            return
+        }
+    
+        presenter.showLoginRow() ? layoutLoginRow(parent: parent) : layoutLogoutRow(parent: parent)
+    }
+    
+    private func layoutLoginRow(parent: UIView) {
+        layoutRow(view: parent, topAnchor: parent.topAnchor, title: LabelDef.login, showBottomBorder: true) { [weak self] in
+            self?.presenter?.showLogin()
+        }
+    }
+    
+    private func layoutLogoutRow(parent: UIView) {
+        layoutRow(view: parent, topAnchor: parent.topAnchor, title: LabelDef.logout, showBottomBorder: true) { [weak self] in
+            self?.presenter?.doLogout()
         }
     }
     
@@ -67,7 +80,7 @@ class MenuViewController: UIViewController {
         showBottomBorder: Bool,
         action: @escaping () -> Void
     ) -> UIView {
-        let row = MenuRowView(title: LabelDef.login, showBottomBorder: showBottomBorder, action: action)
+        let row = MenuRowView(title: title, showBottomBorder: showBottomBorder, action: action)
         
         view.addSubviewForAutoLayout(row)
         NSLayoutConstraint.activate([
@@ -87,14 +100,14 @@ class MenuViewController: UIViewController {
         parent.view.addSubview(view)
         self.didMove(toParent: parent)
         
-        UIView.animate(withDuration: 1) { [weak self] in
+        UIView.animate(withDuration: 0.8) { [weak self] in
             self?.contentRatio = self?.showedContentRatio
         }
     }
     
     func resign() {
         UIView.animate(
-            withDuration: 1,
+            withDuration: 0.8,
             delay: 0,
             animations: { self.view.frame.origin.x = -self.view.bounds.width }
         ) { [weak self] in

@@ -24,7 +24,7 @@ class RelatedUsersViewModel: SwinjectSupport {
     
     func setup() {
         owner?.useEffect(dependencies: [
-            LoginTokenManager.loginTokenStored.eraseToAnyPublisher()
+            LoginSessionManager.loginSessionStored.eraseToAnyPublisher()
         ].compactMap { $0 }) { [weak self] in
             self?.fetch(size: 8)
         }

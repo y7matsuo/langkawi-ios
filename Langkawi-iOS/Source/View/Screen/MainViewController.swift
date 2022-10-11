@@ -6,11 +6,15 @@
 //
 
 import UIKit
+import Combine
 
 class MainViewController: UIViewController {
     private var blockScreen: UIView?
     
+    private var cancellables = Set<AnyCancellable>()
+    
     override func viewDidLoad() {
+        sink()
         layoutTabBar()
     }
     
@@ -27,12 +31,30 @@ class MainViewController: UIViewController {
         
         tabBarVC.didMove(toParent: self)
     }
+    
+    private func removeVC() {
+        self.children.forEach {
+            $0.view.removeFromSuperview()
+            $0.removeFromParent()
+        }
+        
+        self.view.subviews.forEach {
+            $0.removeFromSuperview()
+        }
+    }
+    
+    private func sink() {
+        LoginSessionManager.loginSessionStored.sink { [weak self] _ in
+            self?.removeVC()
+            self?.layoutTabBar()
+        }.store(in: &cancellables)
+    }
 }
 
 extension MainViewController {
     
     func showMenu() {
-        let menuVC = MenuViewController()
+        let menuVC = MenuRouter.assemble()
         menuVC.beforeShow = { [weak self] in self?.addBlockScreen() }
         menuVC.afterResign = { [weak self] in self?.removeBlockScreen() }
         menuVC.show(parent: self)
