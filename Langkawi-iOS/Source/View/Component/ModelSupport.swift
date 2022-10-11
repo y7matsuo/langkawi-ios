@@ -5,7 +5,7 @@
 //  Created by Yuki Matsuo on 2022/09/30.
 //
 
-import Foundation
+import UIKit
 
 extension User {
     
@@ -15,6 +15,14 @@ extension User {
     
     func toAgeLabelText() -> String {
         return "\(self.age ?? 0)\(LabelDef.ageSuffix)"
+    }
+    
+    func toGenderText() -> String {
+        return self.gender?.toLabel() ?? ""
+    }
+    
+    func toGenderColor() -> UIColor {
+        return self.gender?.toColor() ?? .black
     }
 }
 

@@ -81,7 +81,7 @@ class MainTabBarController: UITabBarController {
     }
     
     private var accountViewController: UIViewController {
-        let vc = UINavigationController(rootViewController: AccountViewController())
+        let vc = UINavigationController(rootViewController: AccountRouter.assemble())
         vc.tabBarItem = UITabBarItem(
             title: LabelDef.account,
             image: accountTabBarItemImage(color: .black),
