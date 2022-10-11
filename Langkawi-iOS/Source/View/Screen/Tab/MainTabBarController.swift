@@ -12,45 +12,82 @@ class MainTabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupViewControllers()
+        setViewControllers()
         layoutTabBar()
     }
     
-    private func setupViewControllers() {
-        let homeViewController = UINavigationController(rootViewController: HomeViewController())
-        homeViewController.tabBarItem = UITabBarItem(
+    private func setViewControllers() {
+        if LoginSessionManager.getLoginUserId() != nil {
+            viewControllers = viewControllersForLogin
+        } else {
+            viewControllers = viewControllersForLogout
+        }
+    }
+    
+    private var viewControllersForLogin: [UIViewController] {
+        return [
+            homeViewController,
+            findViewController,
+            talkRoomViewController,
+            articleViewController,
+            accountViewController
+        ]
+    }
+    
+    private var viewControllersForLogout: [UIViewController] {
+        return [
+            articleViewController
+        ]
+    }
+    
+    private var homeViewController: UIViewController {
+        let vc = UINavigationController(rootViewController: HomeViewController())
+        vc.tabBarItem = UITabBarItem(
             title: LabelDef.home,
             image: homeTabBarItemImage(color: .black),
             selectedImage: homeTabBarItemImage(color: .blue)
         )
-        
-        let findViewController = UINavigationController(rootViewController: FindViewController())
-        findViewController.tabBarItem = UITabBarItem(
+        return vc
+    }
+    
+    private var findViewController: UIViewController {
+        let vc = UINavigationController(rootViewController: FindViewController())
+        vc.tabBarItem = UITabBarItem(
             title: LabelDef.find,
             image: findTabBarItemImage(color: .black),
             selectedImage: findTabBarItemImage(color: .blue)
         )
-        
-        let talkRoomViewController = UINavigationController(rootViewController: TalkRoomViewController())
-        talkRoomViewController.tabBarItem = UITabBarItem(
+        return vc
+    }
+    
+    private var talkRoomViewController: UIViewController {
+        let vc = UINavigationController(rootViewController: TalkRoomViewController())
+        vc.tabBarItem = UITabBarItem(
             title: LabelDef.talkRoom,
             image: talkRoomTabBarItemImage(color: .black),
             selectedImage: talkRoomTabBarItemImage(color: .blue)
         )
-        
-        let accountViewController = UINavigationController(rootViewController: AccountViewController())
-        accountViewController.tabBarItem = UITabBarItem(
+        return vc
+    }
+    
+    private var articleViewController: UIViewController {
+        let vc = UINavigationController(rootViewController: ArticleViewController())
+        vc.tabBarItem = UITabBarItem(
+            title: LabelDef.article,
+            image: articleTabBarItemImage(color: .black),
+            selectedImage: articleTabBarItemImage(color: .blue)
+        )
+        return vc
+    }
+    
+    private var accountViewController: UIViewController {
+        let vc = UINavigationController(rootViewController: AccountViewController())
+        vc.tabBarItem = UITabBarItem(
             title: LabelDef.account,
             image: accountTabBarItemImage(color: .black),
             selectedImage: accountTabBarItemImage(color: .blue)
         )
-        
-        viewControllers = [
-            homeViewController,
-            findViewController,
-            talkRoomViewController,
-            accountViewController
-        ]
+        return vc
     }
     
     private func layoutTabBar() {
@@ -84,6 +121,10 @@ class MainTabBarController: UITabBarController {
     
     private func talkRoomTabBarItemImage(color: UIColor) -> UIImage? {
         return tabBarItemImage(name: "comments", color: color)
+    }
+    
+    private func articleTabBarItemImage(color: UIColor) -> UIImage? {
+        return tabBarItemImage(name: "file-lines", color: color)
     }
     
     private func accountTabBarItemImage(color: UIColor) -> UIImage? {
