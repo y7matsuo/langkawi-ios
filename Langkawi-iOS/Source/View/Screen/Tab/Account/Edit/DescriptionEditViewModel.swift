@@ -12,7 +12,7 @@ class DescriptionEditViewModel: SwinjectSupport {
     private lazy var userAPI = resolveInstance(UserAPI.self)
     private lazy var userDetailAPI = resolveInstance(UserDetailAPI.self)
     
-    private lazy var userId = LoginTokenManager.getLoginUserId()
+    private lazy var userId = LoginSessionManager.getLoginUserId()
     
     private weak var owner: OwnerVC?
     private var cancellables = Set<AnyCancellable>()

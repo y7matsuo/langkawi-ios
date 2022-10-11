@@ -10,7 +10,7 @@ import Combine
 class AccountViewModel: SwinjectSupport {
     private lazy var userAPI = resolveInstance(UserAPI.self)
     private lazy var imageAPI = resolveInstance(ImageAPI.self)
-    private lazy var userId = LoginTokenManager.getLoginUserId()
+    private lazy var userId = LoginSessionManager.getLoginUserId()
     
     private weak var owner: AccountViewController?
     

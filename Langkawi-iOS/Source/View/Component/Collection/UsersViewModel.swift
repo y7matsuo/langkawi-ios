@@ -25,7 +25,7 @@ class UsersViewModel<T: UserCell>: SwinjectSupport {
     
     func setup() {
         owner?.useEffect(dependencies: [
-            LoginTokenManager.loginTokenStored.eraseToAnyPublisher()
+            LoginSessionManager.loginSessionStored.eraseToAnyPublisher()
         ]) { [weak self] in
             self?.fetch(page: 0)
         }

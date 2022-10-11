@@ -27,7 +27,7 @@ class NameEditViewModel: SwinjectSupport {
     func setup() {
         owner?.useEffect { [weak self] in
             self?.owner?.request(requester: { () -> AnyPublisher<User, Error>? in
-                guard let userId = LoginTokenManager.getLoginUserId() else {
+                guard let userId = LoginSessionManager.getLoginUserId() else {
                     return nil
                 }
                 return self?.userAPI.user(userId: userId)
@@ -50,7 +50,7 @@ class NameEditViewModel: SwinjectSupport {
     
     func submit(onComplete: @escaping () -> Void) {
         owner?.request(requester: { [weak self] () -> AnyPublisher<User, Error>? in
-            guard let userId = LoginTokenManager.getLoginUserId() else {
+            guard let userId = LoginSessionManager.getLoginUserId() else {
                 return nil
             }
             return self?.userAPI.updateUser(
