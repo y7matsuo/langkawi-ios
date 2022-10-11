@@ -6,9 +6,14 @@
 //
 
 import UIKit
+import SwiftUI
+import Combine
 
-class AccountViewController: BaseViewController {
-    private lazy var vm = AccountViewModel(owner: self)
+class AccountViewController: UIViewController, AccountViewProtocol {
+    var vm: AccountViewModel?
+    var presenter: AccountPresentation?
+    
+    private var cancellables = Set<AnyCancellable>()
     
     var avator: UIImageView?
     var nameLabel: UILabel?
@@ -19,12 +24,17 @@ class AccountViewController: BaseViewController {
     private var nameArea: UIView?
     
     override func viewDidLoad() {
-        vm.setup()
+        super.viewDidLoad()
         layoutNavigationBar()
         layoutImageContainer()
         layoutNameArea()
         layoutDescriptionArea()
-        super.viewDidLoad()
+        sink()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        presenter?.fetchAccount()
     }
     
     private func layoutNavigationBar() {
@@ -99,7 +109,7 @@ class AccountViewController: BaseViewController {
         nameAreaStack.addArrangedSubview(ageLabel)
         
         layoutEditButton(leftContainer: nameArea, name: "pen-to-square", type: .solid) { [weak self] _ in
-            self?.navigationController?.pushViewController(NameEditViewController(), animated: false)
+            self?.presenter?.showEditName()
         }
     }
     
@@ -122,7 +132,7 @@ class AccountViewController: BaseViewController {
         ])
         
         layoutEditButton(leftContainer: descriptionLabel, name: "pencil", type: .solid) { [weak self] _ in
-            self?.navigationController?.pushViewController(DescriptionEditViewController(), animated: false)
+            self?.presenter?.showEditDescription()
         }
     }
     
@@ -156,5 +166,37 @@ class AccountViewController: BaseViewController {
             button.widthAnchor.constraint(equalToConstant: 40),
             button.heightAnchor.constraint(equalToConstant: 40)
         ])
+    }
+    
+    private func sink() {
+        vm?.$avator.sink { [weak self] in
+            self?.avator?.image = $0
+        }.store(in: &cancellables)
+        
+        vm?.$name.sink { [weak self] in
+            self?.nameLabel?.text = $0
+        }.store(in: &cancellables)
+        
+        vm?.$gender.sink { [weak self] in
+            self?.genderLabel?.text = $0
+        }.store(in: &cancellables)
+        
+        vm?.$genderColor.sink { [weak self] in
+            self?.genderLabel?.textColor = $0
+        }.store(in: &cancellables)
+        
+        vm?.$age.sink { [weak self] in
+            self?.ageLabel?.text = $0
+        }.store(in: &cancellables)
+        
+        vm?.$description.sink { [weak self] in
+            self?.descriptionLabel?.text = $0
+        }.store(in: &cancellables)
+    }
+}
+
+struct AccountView_Preview: PreviewProvider {
+    static var previews: some View {
+        PreviewViewControllerRepresentable(router: AccountPreviewRouter())
     }
 }
