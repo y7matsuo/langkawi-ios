@@ -10,8 +10,8 @@ import SwiftUI
 import Combine
 
 class AccountViewController: UIViewController, AccountViewProtocol {
-    var vm: AccountViewModel?
-    var presenter: AccountPresentation?
+    let vm: AccountViewModel
+    let presenter: AccountPresentation
     
     private var cancellables = Set<AnyCancellable>()
     
@@ -22,6 +22,16 @@ class AccountViewController: UIViewController, AccountViewProtocol {
     var descriptionLabel: UILabel?
     
     private var nameArea: UIView?
+    
+    init(vm: AccountViewModel, presenter: AccountPresentation) {
+        self.vm = vm
+        self.presenter = presenter
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +44,7 @@ class AccountViewController: UIViewController, AccountViewProtocol {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        presenter?.fetchAccount()
+        presenter.fetchAccount()
     }
     
     private func layoutNavigationBar() {
@@ -109,7 +119,7 @@ class AccountViewController: UIViewController, AccountViewProtocol {
         nameAreaStack.addArrangedSubview(ageLabel)
         
         layoutEditButton(leftContainer: nameArea, name: "pen-to-square", type: .solid) { [weak self] _ in
-            self?.presenter?.showEditName()
+            self?.presenter.showEditName()
         }
     }
     
@@ -132,7 +142,7 @@ class AccountViewController: UIViewController, AccountViewProtocol {
         ])
         
         layoutEditButton(leftContainer: descriptionLabel, name: "pencil", type: .solid) { [weak self] _ in
-            self?.presenter?.showEditDescription()
+            self?.presenter.showEditDescription()
         }
     }
     
@@ -169,27 +179,27 @@ class AccountViewController: UIViewController, AccountViewProtocol {
     }
     
     private func sink() {
-        vm?.$avator.sink { [weak self] in
+        vm.$avator.sink { [weak self] in
             self?.avator?.image = $0
         }.store(in: &cancellables)
         
-        vm?.$name.sink { [weak self] in
+        vm.$name.sink { [weak self] in
             self?.nameLabel?.text = $0
         }.store(in: &cancellables)
         
-        vm?.$gender.sink { [weak self] in
+        vm.$gender.sink { [weak self] in
             self?.genderLabel?.text = $0
         }.store(in: &cancellables)
         
-        vm?.$genderColor.sink { [weak self] in
+        vm.$genderColor.sink { [weak self] in
             self?.genderLabel?.textColor = $0
         }.store(in: &cancellables)
         
-        vm?.$age.sink { [weak self] in
+        vm.$age.sink { [weak self] in
             self?.ageLabel?.text = $0
         }.store(in: &cancellables)
         
-        vm?.$description.sink { [weak self] in
+        vm.$description.sink { [weak self] in
             self?.descriptionLabel?.text = $0
         }.store(in: &cancellables)
     }

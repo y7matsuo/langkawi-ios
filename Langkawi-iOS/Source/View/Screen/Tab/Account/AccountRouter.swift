@@ -16,9 +16,7 @@ class AccountRouter: AccountWireframe {
         let router = AccountRouter()
         let presenter = AccountPresenter(vm: vm, interactor: interactor, router: router)
         interactor.output = presenter
-        let view = AccountViewController()
-        view.vm = vm
-        view.presenter = presenter
+        let view = AccountViewController(vm: vm, presenter: presenter)
         router.view = view
         return view
     }
