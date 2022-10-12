@@ -12,8 +12,10 @@ import Combine
 class LoginViewController: BaseViewController, UITextFieldDelegate {
     private lazy var vm = LoginViewModel()
     
-    private var emailTextField: UITextField?
-    private var passwordTextField: UITextField?
+    private var emailTextField: UITextField!
+    private var passwordTextField: UITextField!
+    private var loginButton: UIButton!
+    private var forgetPassword: UIButton!
     
     private var cancellable: AnyCancellable?
     
@@ -27,13 +29,23 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
     private func layout() {
         let container = UIView()
         
-        let emailTextField = createTextField(placeHolder: LabelDef.email, isSecureText: false)
-        let passwordTextField = createTextField(placeHolder: LabelDef.password, isSecureText: true)
-        let button = createLoginButton()
+        emailTextField = customizeTextField(placeHolder: LabelDef.email) {
+            let textField = ProjectTextField()
+            textField.clearButtonMode = .always
+            return textField
+        }
+        passwordTextField = customizeTextField(placeHolder: LabelDef.password) {
+            PasswordTextField()
+        }
+        loginButton = createLoginButton()
+        forgetPassword = createForgetPassword {
+            DialogManager.openUrl(string: UrlDef.forgetPassword)
+        }
         
         container.addSubviewForAutoLayout(emailTextField)
         container.addSubviewForAutoLayout(passwordTextField)
-        container.addSubviewForAutoLayout(button)
+        container.addSubviewForAutoLayout(loginButton)
+        container.addSubviewForAutoLayout(forgetPassword)
         
         NSLayoutConstraint.activate([
             emailTextField.topAnchor.constraint(equalTo: container.topAnchor),
@@ -50,11 +62,16 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
         ])
         
         NSLayoutConstraint.activate([
-            button.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 30),
-            button.widthAnchor.constraint(equalToConstant: 240),
-            button.heightAnchor.constraint(equalToConstant: 50),
-            button.bottomAnchor.constraint(equalTo: container.bottomAnchor),
-            button.centerXAnchor.constraint(equalTo: container.centerXAnchor)
+            loginButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 30),
+            loginButton.widthAnchor.constraint(equalToConstant: 240),
+            loginButton.heightAnchor.constraint(equalToConstant: 50),
+            loginButton.centerXAnchor.constraint(equalTo: container.centerXAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            forgetPassword.centerXAnchor.constraint(equalTo: container.centerXAnchor),
+            forgetPassword.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 30),
+            forgetPassword.bottomAnchor.constraint(equalTo: container.bottomAnchor)
         ])
         
         view.addSubviewForAutoLayout(container)
@@ -64,9 +81,6 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
             container.rightAnchor.constraint(equalTo: view.rightAnchor),
             container.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
-        
-        self.emailTextField = emailTextField
-        self.passwordTextField = passwordTextField
         
         // TODO: 削除
         emailTextField.text = "jerold@adams.co"
@@ -78,13 +92,11 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
         return true
     }
     
-    private func createTextField(placeHolder: String, isSecureText: Bool) -> UITextField {
-        let textField = ProjectTextField()
+    private func customizeTextField(placeHolder: String, creator: () -> UITextField) -> UITextField {
+        let textField = creator()
         textField.backgroundColor = .lightGray
-        textField.borderStyle = .roundedRect
+        textField.layer.cornerRadius = 20
         textField.placeholder = placeHolder
-        textField.isSecureTextEntry = isSecureText
-        textField.clearButtonMode = .always
         textField.keyboardType = .default
         textField.delegate = self
         return textField
@@ -101,6 +113,22 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
         button.backgroundColor = .green
         button.layer.cornerRadius = 25
         button.addTarget(self, action: #selector(self.onClickButton(_:)), for: .touchUpInside)
+        return button
+    }
+    
+    private func createForgetPassword(action: @escaping () -> Void) -> UIButton {
+        let button = UIButton()
+        let attrinutes: [NSAttributedString.Key: Any] = [
+            .font: UIFont.systemFont(ofSize: 16),
+            .underlineStyle: NSUnderlineStyle.single.rawValue
+        ]
+        button.setAttributedTitle(
+            NSAttributedString(string: LabelDef.forgetPassword, attributes: attrinutes),
+            for: .normal
+        )
+        button.setTitleColor(.blue, for: .normal)
+        button.addAction(UIAction { _ in action() }, for: .touchUpInside)
+        button.isEnabled = true
         return button
     }
     

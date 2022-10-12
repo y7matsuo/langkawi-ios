@@ -8,7 +8,8 @@
 import Foundation
 
 class UrlDef {
-    static let serviceRule = "https://www.yahoo.co.jp"
     
+    static let forgetPassword = "https://www.yahoo.co.jp"
+    static let serviceRule = "https://www.yahoo.co.jp"
     static let copyright = "https://kinto-jp.com"
 }
