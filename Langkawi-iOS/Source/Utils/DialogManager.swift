@@ -33,4 +33,11 @@ class DialogManager {
             presenter?.present(vc, animated: true)
         }
     }
+    
+    static func openUrl(string: String) {
+        guard let url = URL(string: string) else {
+            return
+        }
+        UIApplication.shared.open(url)
+    }
 }

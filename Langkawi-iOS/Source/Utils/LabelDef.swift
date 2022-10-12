@@ -49,6 +49,8 @@ class LabelDef {
     static let serviceRule = "利用規約"
     static let copyright = "著作権"
     
+    static let forgetPassword = "パスワードを忘れた方はこちら"
+    
     static let ageSuffix = "歳"
     static let dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
 }
