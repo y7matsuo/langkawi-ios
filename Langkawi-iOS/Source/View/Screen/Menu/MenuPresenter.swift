@@ -25,6 +25,14 @@ class MenuPresenter: MenuPresentation {
         interactor.logout()
     }
     
+    func showServiceRule() {
+        router.presentServiceRule()
+    }
+    
+    func showCopyright() {
+        router.presentCopyright()
+    }
+    
     func showLoginRow() -> Bool {
         return LoginSessionManager.getLoginUserId() == nil
     }

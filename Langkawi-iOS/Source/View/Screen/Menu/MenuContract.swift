@@ -18,6 +18,8 @@ protocol MenuInteractorOutput: BaseInteractorOutput {
 protocol MenuPresentation: BasePresentation {
     func showLogin()
     func doLogout()
+    func showServiceRule()
+    func showCopyright()
     
     func showLoginRow() -> Bool
 }
@@ -26,6 +28,8 @@ protocol MenuWireframe: BaseWireframe {
     static func assemble() -> MenuViewController
     
     func presentLogin()
+    func presentServiceRule()
+    func presentCopyright()
 }
 
 protocol MenuViewProtocol: BaseViewProtocol {}

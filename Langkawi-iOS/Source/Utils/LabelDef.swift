@@ -13,6 +13,7 @@ class LabelDef {
     static let cancel = "キャンセル"
     static let back = "戻る"
     
+    static let authorization = "認証"
     static let login = "ログイン"
     static let logout = "ログアウト"
     static let email = "メールアドレス"
@@ -43,6 +44,10 @@ class LabelDef {
     static let apply = "交際を申し込む"
     
     static let talkRoom = "トークルーム"
+    
+    static let rules = "規約等"
+    static let serviceRule = "利用規約"
+    static let copyright = "著作権"
     
     static let ageSuffix = "歳"
     static let dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"

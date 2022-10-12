@@ -55,9 +55,10 @@ extension MainViewController {
     
     func showMenu() {
         let menuVC = MenuRouter.assemble()
-        menuVC.beforeShow = { [weak self] in self?.addBlockScreen() }
-        menuVC.afterResign = { [weak self] in self?.removeBlockScreen() }
-        menuVC.show(parent: self)
+        let vc = UINavigationController(rootViewController: menuVC)
+        self.addChild(vc)
+        self.view.addSubview(vc.view)
+        vc.didMove(toParent: self)
     }
     
     func addBlockScreen() {

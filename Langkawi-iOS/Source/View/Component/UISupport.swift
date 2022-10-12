@@ -14,6 +14,15 @@ extension UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(view)
     }
+    
+    func layoutFit(_ view: UIView) {
+        NSLayoutConstraint.activate([
+            view.topAnchor.constraint(equalTo: self.topAnchor),
+            view.leftAnchor.constraint(equalTo: self.leftAnchor),
+            view.rightAnchor.constraint(equalTo: self.rightAnchor),
+            view.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+        ])
+    }
 }
 
 extension UILabel {
@@ -53,13 +62,13 @@ extension UIViewController {
 extension UIViewController {
     
     func addMenuButton() {
-        navigationItem.leftBarButtonItem = UIBarButtonItem(
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
             image: UILabel.fontAwesome(type: .solid, name: "bars", color: .black, size: 20).toImage() ?? UIImage(),
             style: .plain,
             target: self,
             action: #selector(self.onTapMenuButton(_:))
         )
-        navigationItem.leftBarButtonItem?.tintColor = .black
+        navigationItem.rightBarButtonItem?.tintColor = .black
         setScreenEdgePanGestureRecognizerForMenu()
     }
     

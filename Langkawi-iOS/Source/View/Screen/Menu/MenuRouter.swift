@@ -15,8 +15,7 @@ class MenuRouter: MenuWireframe {
         let router = MenuRouter()
         let presenter = MenuPresenter(interactor: interactor, router: router)
         interactor.output = presenter
-        let view = MenuViewController()
-        view.presenter = presenter
+        let view = MenuViewController(presenter: presenter)
         router.view = view
         return view
     }
@@ -25,5 +24,15 @@ class MenuRouter: MenuWireframe {
         let vc = LoginViewController()
         vc.modalPresentationStyle = .fullScreen
         view?.present(vc, animated: true)
+    }
+    
+    func presentServiceRule() {
+        let vc = BaseWebViewController(title: LabelDef.serviceRule, urlString: UrlDef.serviceRule)
+        view?.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func presentCopyright() {
+        let vc = BaseWebViewController(title: LabelDef.copyright, urlString: UrlDef.copyright)
+        view?.navigationController?.pushViewController(vc, animated: true)
     }
 }
