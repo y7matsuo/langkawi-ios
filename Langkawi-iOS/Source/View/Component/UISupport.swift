@@ -108,3 +108,10 @@ extension UIViewController {
         return nil
     }
 }
+
+extension UIViewController {
+    
+    func resolveSequenceSupport() -> SequenceSupport? {
+        return parent as? SequenceSupport
+    }
+}

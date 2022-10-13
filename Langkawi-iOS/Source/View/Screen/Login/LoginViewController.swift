@@ -21,6 +21,7 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.hidesBackButton = true
         view.backgroundColor = .white
         
         layout()
@@ -141,7 +142,12 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
             return vm.loginAPI.login(email: email, password: password)
         }) { [weak self] (response: LoginResponse) in
             self?.vm.loginCompletion(response: response)
-            self?.dismiss(animated: true)
+            
+            if let sequeceSupport = self?.resolveSequenceSupport() {
+                sequeceSupport.navigateNextSequence(cond: nil)
+            } else {
+                self?.dismiss(animated: true)
+            }
         }
     }
 }

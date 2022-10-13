@@ -51,6 +51,9 @@ class LabelDef {
     
     static let forgetPassword = "パスワードを忘れた方はこちら"
     
+    static let next = "次へ進む"
+    static let skip = "後で見る"
+    
     static let ageSuffix = "歳"
     static let dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
 }
