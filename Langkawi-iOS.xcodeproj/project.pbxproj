@@ -10,6 +10,11 @@
 		0BED73361B9D646C72AEBA32 /* Pods_Langkawi_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CC005C4FF07741F899D93DE /* Pods_Langkawi_iOS.framework */; };
 		22766530167464AAE58F52BC /* Pods_Langkawi_iOS_Langkawi_iOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DE3C9EB39E9A0854524CD91 /* Pods_Langkawi_iOS_Langkawi_iOSUITests.framework */; };
 		5EBB9657A979975C0394BBE7 /* Pods_Langkawi_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93921279D7228086E98E29B4 /* Pods_Langkawi_iOSTests.framework */; };
+		6F3C27B728F7A0D400B2E32C /* SequenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3C27B628F7A0D400B2E32C /* SequenceViewController.swift */; };
+		6F3C27BA28F7AEDC00B2E32C /* StartUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3C27B928F7AEDC00B2E32C /* StartUtil.swift */; };
+		6F3C27BC28F7B1E400B2E32C /* SequenceSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3C27BB28F7B1E400B2E32C /* SequenceSupport.swift */; };
+		6F3C27BF28F7CCD200B2E32C /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3C27BE28F7CCD200B2E32C /* TutorialViewController.swift */; };
+		6F3C27C328F7D41B00B2E32C /* TutorialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F3C27C228F7D41B00B2E32C /* TutorialViewController.xib */; };
 		6F83FC4B28F2EDBE0060FD0A /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F83FC4A28F2EDBE0060FD0A /* MenuViewController.swift */; };
 		6F83FC4F28F3B8C40060FD0A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F83FC4E28F3B8C40060FD0A /* MainViewController.swift */; };
 		6F83FC5128F41AFA0060FD0A /* ColorDef.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F83FC5028F41AFA0060FD0A /* ColorDef.swift */; };
@@ -183,6 +188,11 @@
 		0FB5074A2A7DFD8D6B587B9A /* Pods-Langkawi-iOS-Langkawi-iOSUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Langkawi-iOS-Langkawi-iOSUITests.release.xcconfig"; path = "Target Support Files/Pods-Langkawi-iOS-Langkawi-iOSUITests/Pods-Langkawi-iOS-Langkawi-iOSUITests.release.xcconfig"; sourceTree = "<group>"; };
 		2CC005C4FF07741F899D93DE /* Pods_Langkawi_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Langkawi_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DE3C9EB39E9A0854524CD91 /* Pods_Langkawi_iOS_Langkawi_iOSUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Langkawi_iOS_Langkawi_iOSUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F3C27B628F7A0D400B2E32C /* SequenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceViewController.swift; sourceTree = "<group>"; };
+		6F3C27B928F7AEDC00B2E32C /* StartUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartUtil.swift; sourceTree = "<group>"; };
+		6F3C27BB28F7B1E400B2E32C /* SequenceSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceSupport.swift; sourceTree = "<group>"; };
+		6F3C27BE28F7CCD200B2E32C /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
+		6F3C27C228F7D41B00B2E32C /* TutorialViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TutorialViewController.xib; sourceTree = "<group>"; };
 		6F83FC4A28F2EDBE0060FD0A /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		6F83FC4E28F3B8C40060FD0A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		6F83FC5028F41AFA0060FD0A /* ColorDef.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorDef.swift; sourceTree = "<group>"; };
@@ -325,6 +335,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6F3C27B828F7ACA900B2E32C /* Sequence */ = {
+			isa = PBXGroup;
+			children = (
+				6F3C27BB28F7B1E400B2E32C /* SequenceSupport.swift */,
+				6F3C27B628F7A0D400B2E32C /* SequenceViewController.swift */,
+				6F3C27B928F7AEDC00B2E32C /* StartUtil.swift */,
+			);
+			path = Sequence;
+			sourceTree = "<group>";
+		};
+		6F3C27BD28F7CC9400B2E32C /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				6F3C27BE28F7CCD200B2E32C /* TutorialViewController.swift */,
+				6F3C27C228F7D41B00B2E32C /* TutorialViewController.xib */,
+			);
+			path = Tutorial;
+			sourceTree = "<group>";
+		};
 		6F83FC4228F2ED9E0060FD0A /* Menu */ = {
 			isa = PBXGroup;
 			children = (
@@ -592,6 +621,7 @@
 				CBE832C728D1623800D8E953 /* Cell */,
 				CBE832FD28D9554500D8E953 /* Collection */,
 				CB668E1828E2778800A512B7 /* Dialog */,
+				6F3C27B828F7ACA900B2E32C /* Sequence */,
 				6F91152128F670F6002DE943 /* Web */,
 			);
 			path = Component;
@@ -606,6 +636,7 @@
 				6F83FC4228F2ED9E0060FD0A /* Menu */,
 				CBE8330228D9981400D8E953 /* PositionStatusUsers */,
 				CBE832C328D1584600D8E953 /* Tab */,
+				6F3C27BD28F7CC9400B2E32C /* Tutorial */,
 				CB668E0028DA941B00A512B7 /* UserDetail */,
 			);
 			path = Screen;
@@ -920,6 +951,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F3C27C328F7D41B00B2E32C /* TutorialViewController.xib in Resources */,
 				CBE832A628CC38F500D8E953 /* Font Awesome 6 Brands-Regular-400.otf in Resources */,
 				CBE832A428CC38F500D8E953 /* Font Awesome 6 Free-Solid-900.otf in Resources */,
 				CBE832A328CC38F500D8E953 /* Assets.xcassets in Resources */,
@@ -1057,6 +1089,7 @@
 				CB668E0928DA943800A512B7 /* UserDetailViewController.swift in Sources */,
 				6FA24EED28F4FB8A001DAFF2 /* MenuRouter.swift in Sources */,
 				CB55F89F28E6996C00D3056C /* ModelSupport.swift in Sources */,
+				6F3C27BF28F7CCD200B2E32C /* TutorialViewController.swift in Sources */,
 				CB668E3928E674B600A512B7 /* TalkRoomViewModel.swift in Sources */,
 				CBE8330128D960E000D8E953 /* FindViewModel.swift in Sources */,
 				CBE8330628D9986300D8E953 /* PositionStatusUsersViewModel.swift in Sources */,
@@ -1090,6 +1123,7 @@
 				CBE832C628D158BE00D8E953 /* UsersViewController.swift in Sources */,
 				CBE832C928D1625500D8E953 /* UserCell.swift in Sources */,
 				CB668E2028E2D6F100A512B7 /* DescriptionEditViewController.swift in Sources */,
+				6F3C27BC28F7B1E400B2E32C /* SequenceSupport.swift in Sources */,
 				6F83FC4F28F3B8C40060FD0A /* MainViewController.swift in Sources */,
 				CB668E2828E66A6000A512B7 /* TalkRoomsResponse.swift in Sources */,
 				CB668E1728E26DE400A512B7 /* NameEditViewModel.swift in Sources */,
@@ -1101,6 +1135,7 @@
 				CBE832DC28D2AA5F00D8E953 /* ImageAPI.swift in Sources */,
 				CB668E3028E66E8E00A512B7 /* TalksResponse.swift in Sources */,
 				CBE832D628D1A79800D8E953 /* UserDetail.swift in Sources */,
+				6F3C27BA28F7AEDC00B2E32C /* StartUtil.swift in Sources */,
 				6FA24EFD28F54239001DAFF2 /* AccountPreviewRouter.swift in Sources */,
 				CBE8329C28CC38BB00D8E953 /* SceneDelegate.swift in Sources */,
 				CBE832BD28CDA88400D8E953 /* LoginViewModel.swift in Sources */,
@@ -1121,6 +1156,7 @@
 				CBE8329A28CC38BB00D8E953 /* Errors.swift in Sources */,
 				CBE8329828CC38BB00D8E953 /* BaseAPI.swift in Sources */,
 				CBE8329628CC38BB00D8E953 /* HomeViewController.swift in Sources */,
+				6F3C27B728F7A0D400B2E32C /* SequenceViewController.swift in Sources */,
 				CBE832B528CC86F600D8E953 /* DBKeyValue.swift in Sources */,
 				CB668E1E28E283EF00A512B7 /* GenderPickerViewDialog.swift in Sources */,
 				CB668E1A28E278F800A512B7 /* PickerViewDialog.swift in Sources */,
