@@ -13,9 +13,26 @@ class MainViewController: UIViewController {
     
     private var cancellables = Set<AnyCancellable>()
     
+    private var startSequenceResolvers = StartUitl.sequenceResolvers
+    
     override func viewDidLoad() {
+        layoutStartSequence()
         sink()
-        layoutTabBar()
+    }
+    
+    private func layoutStartSequence() {
+        guard let rootResolver = startSequenceResolvers.first else {
+            return
+        }
+        let sequenceVC = SequenceViewController(rootResolver: rootResolver) { [weak self] in
+            $0.dismiss(animated: true)
+            self?.removeVC()
+            self?.layoutTabBar()
+        }
+        
+        addChild(sequenceVC)
+        view.addSubview(sequenceVC.view)
+        sequenceVC.didMove(toParent: self)
     }
     
     private func layoutTabBar() {
