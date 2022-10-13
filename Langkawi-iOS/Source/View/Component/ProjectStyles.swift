@@ -21,3 +21,26 @@ class ProjectStyles {
         return button
     }
 }
+
+extension UIButton {
+    
+    func configurePrimary(title: String, action: @escaping () -> Void) {
+        self.configureDefault(title: title, action: action)
+        self.backgroundColor = ColorDef.primary
+    }
+    
+    func configureSecondary(title: String, action: @escaping () -> Void) {
+        self.configureDefault(title: title, action: action)
+        self.backgroundColor = ColorDef.secondary
+    }
+    
+    private func configureDefault(title: String, action: @escaping () -> Void) {
+        self.layer.cornerRadius = 25
+        self.setAttributedTitle(
+            NSAttributedString(string: title, attributes: [.font: UIFont.systemFont(ofSize: 16, weight: .bold)]),
+            for: .normal
+        )
+        self.setTitleColor(.black, for: .normal)
+        self.addAction(UIAction { _ in action() }, for: .touchUpInside)
+    }
+}
