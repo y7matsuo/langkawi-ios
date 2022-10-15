@@ -10,7 +10,7 @@ import UIKit
 class AccountRouter: AccountWireframe {
     weak var view: UIViewController?
     
-    static func assemble() -> AccountViewProtocol {
+    static func assemble() -> AccountViewController {
         let interactor = AccountInteractor(userAPI: UserAPIImpl(), imageAPI: ImageAPIImpl())
         let vm = AccountViewModel()
         let router = AccountRouter()

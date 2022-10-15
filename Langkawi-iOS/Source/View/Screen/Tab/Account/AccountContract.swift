@@ -7,28 +7,35 @@
 
 import UIKit
 
-protocol AccountUseCase: BaseUseCase {
+/// @mockable
+protocol AccountUseCase: AnyObject {
     func fetchUser(userId: Int)
     func fetchAvator(userId: Int)
+    func getUserId() -> Int?
 }
 
-protocol AccountInteractorOutput: BaseInteractorOutput {
+/// @mockable
+protocol AccountInteractorOutput: AnyObject {
     func onFetchUser(user: User)
     func onFetchAvator(image: UIImage)
+    func onError(error: Error)
 }
 
-protocol AccountPresentation: BasePresentation {
+/// @mockable
+protocol AccountPresentation: AnyObject {
     func fetchAccount()
     
     func showEditName()
     func showEditDescription()
 }
 
-protocol AccountWireframe: BaseWireframe {
-    static func assemble() -> AccountViewProtocol
+/// @mockable
+protocol AccountWireframe: AnyObject {
+    static func assemble() -> AccountViewController
     
     func presentEditName()
     func presentEditDescription()
 }
 
-protocol AccountViewProtocol: BaseViewProtocol {}
+/// @mockable
+protocol AccountViewProtocol: AnyObject {}

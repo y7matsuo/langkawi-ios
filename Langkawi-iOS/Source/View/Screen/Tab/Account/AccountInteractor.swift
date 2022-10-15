@@ -20,7 +20,7 @@ class AccountInteractor: AccountUseCase {
     }
     
     func fetchUser(userId: Int) {
-        request(
+        APIManager.request(
             requester: { self.userAPI.user(userId: userId) },
             errorHandler: { [weak self] in self?.output?.onError(error: $0) }
         ) { [weak self] in
@@ -29,11 +29,15 @@ class AccountInteractor: AccountUseCase {
     }
     
     func fetchAvator(userId: Int) {
-        request(
+        APIManager.request(
             requester: { self.imageAPI.getUserDetailPictureA(userId: userId) },
             errorHandler: { [weak self] in self?.output?.onError(error: $0) }
         ) { [weak self] in
             self?.output?.onFetchAvator(image: $0)
         }?.store(in: &cancellables)
+    }
+    
+    func getUserId() -> Int? {
+        return LoginSessionManager.getLoginUserId()
     }
 }

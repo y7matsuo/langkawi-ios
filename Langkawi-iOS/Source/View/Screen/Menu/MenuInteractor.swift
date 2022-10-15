@@ -18,11 +18,15 @@ class MenuInteractor: MenuUseCase {
     }
     
     func logout() {
-        request(
+        APIManager.request(
             requester: { self.loginAPI.logout() },
             errorHandler: { [weak self] in self?.output?.onError(error: $0) }
         ) { [weak self] _ in
             self?.output?.onLogout()
         }?.store(in: &cancellables)
+    }
+    
+    func isLoggedIn() -> Bool {
+        return LoginSessionManager.getLoginUserId() != nil
     }
 }

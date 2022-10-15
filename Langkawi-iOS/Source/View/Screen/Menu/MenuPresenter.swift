@@ -4,7 +4,7 @@
 //
 //  Created by 松尾 勇気（Yuki Matsuo） on 2022/10/11.
 //
-
+import UIKit
 import Combine
 
 class MenuPresenter: MenuPresentation {
@@ -34,7 +34,7 @@ class MenuPresenter: MenuPresentation {
     }
     
     func showLoginRow() -> Bool {
-        return LoginSessionManager.getLoginUserId() == nil
+        return !interactor.isLoggedIn()
     }
 }
 
@@ -44,6 +44,6 @@ extension MenuPresenter: MenuInteractorOutput {
     }
     
     func onError(error: Error) {
-        GlobalErrorHandler.handle(error: error, vc: view)
+        GlobalErrorHandler.handle(error: error, vc: view as? UIViewController)
     }
 }
