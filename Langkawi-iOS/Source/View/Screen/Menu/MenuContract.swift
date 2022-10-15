@@ -7,15 +7,17 @@
 
 import UIKit
 
-protocol MenuUseCase: BaseUseCase {
+protocol MenuUseCase: AnyObject {
     func logout()
+    func isLoggedIn() -> Bool
 }
 
-protocol MenuInteractorOutput: BaseInteractorOutput {
+protocol MenuInteractorOutput: AnyObject {
     func onLogout()
+    func onError(error: Error)
 }
 
-protocol MenuPresentation: BasePresentation {
+protocol MenuPresentation: AnyObject {
     func showLogin()
     func doLogout()
     func showServiceRule()
@@ -24,7 +26,7 @@ protocol MenuPresentation: BasePresentation {
     func showLoginRow() -> Bool
 }
 
-protocol MenuWireframe: BaseWireframe {
+protocol MenuWireframe: AnyObject {
     static func assemble() -> MenuViewController
     
     func presentLogin()
@@ -32,4 +34,4 @@ protocol MenuWireframe: BaseWireframe {
     func presentCopyright()
 }
 
-protocol MenuViewProtocol: BaseViewProtocol {}
+protocol MenuViewProtocol: AnyObject {}

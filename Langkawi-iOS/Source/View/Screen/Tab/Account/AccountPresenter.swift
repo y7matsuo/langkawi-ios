@@ -9,18 +9,18 @@ import UIKit
 
 class AccountPresenter: AccountPresentation {
     private let vm: AccountViewModel
-    private let interactor: AccountInteractor
+    private let interactor: AccountUseCase
     private let router: AccountWireframe
     weak var view: AccountViewProtocol?
 
-    init(vm: AccountViewModel, interactor: AccountInteractor, router: AccountWireframe) {
+    init(vm: AccountViewModel, interactor: AccountUseCase, router: AccountWireframe) {
         self.vm = vm
         self.interactor = interactor
         self.router = router
     }
     
     func fetchAccount() {
-        guard let userId = LoginSessionManager.getLoginUserId() else {
+        guard let userId = interactor.getUserId() else {
             return
         }
         interactor.fetchAvator(userId: userId)
@@ -50,6 +50,6 @@ extension AccountPresenter: AccountInteractorOutput {
     }
     
     func onError(error: Error) {
-        GlobalErrorHandler.handle(error: error, vc: self.view)
+        GlobalErrorHandler.handle(error: error, vc: view as? UIViewController)
     }
 }
