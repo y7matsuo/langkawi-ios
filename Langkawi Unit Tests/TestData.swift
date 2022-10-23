@@ -6,7 +6,7 @@
 //
 
 import Foundation
-@testable import Langkawi_iOS
+@testable import Langkawi
 
 class TestData {
     

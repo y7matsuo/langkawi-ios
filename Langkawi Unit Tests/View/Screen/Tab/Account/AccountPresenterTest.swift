@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import Langkawi_iOS
+@testable import Langkawi
 
 class AccountPresenterTest: XCTestCase {
     private var vm: AccountViewModel!

@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import Langkawi_iOS
+@testable import Langkawi
 
 class Langkawi_iOSTests: XCTestCase {
 
