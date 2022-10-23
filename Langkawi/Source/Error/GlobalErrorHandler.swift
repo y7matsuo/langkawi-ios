@@ -5,6 +5,7 @@
 //  Created by Yuki Matsuo on 2022/09/03.
 //
 
+import UIKit
 import Alamofire
 
 class GlobalErrorHandler {

@@ -1,7 +1,7 @@
-# Langkawi-iOS
+# Langkawi
 
 ## Setup
 ```
-$ bundle install
-$ bundle exec pod install
+$ brew install xcodegen
+$ xcodegen generate
 ```

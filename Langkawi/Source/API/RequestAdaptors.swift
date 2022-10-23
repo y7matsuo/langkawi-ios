@@ -5,6 +5,7 @@
 //  Created by Yuki Matsuo on 2022/09/11.
 //
 
+import Foundation
 import Alamofire
 import RealmSwift
 
