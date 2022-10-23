@@ -1,0 +1,105 @@
+name: Langkawi
+
+options:
+  deploymentTarget: 
+    iOS: 14.0
+  xcodeVersion: 14.0.1
+  useBaseInternationalization: false
+  groupOrdering:
+    - order: [Langkawi, Langkawi Unit Tests]
+    - pattern: Langkawi
+      order: [Source, Resource]
+attributes:
+  ORGANIZATIONNAME: y7matsuo
+packages:
+  Alamofire:
+    url: https://github.com/Alamofire/Alamofire.git
+    minorVersion: 5.6.2
+  Swinject:
+    url: https://github.com/Swinject/Swinject.git
+    minorVersion: 2.8.2
+  RealmSwift:
+    url: https://github.com/realm/realm-swift.git
+    minorVersion: 10.32.0
+
+targetTemplates:
+  Main:
+    type: application
+    platform: iOS
+    sources:
+      - path: ./Langkawi
+        excludes:
+          - "**/.*.swp"
+          - Scripts
+    # dependencies:
+    #   - target: App
+    #   - target: API
+    # preBuildScripts:
+    #   - name: lint.sh
+    #     path: ./Langkawi/Scripts/lint.sh
+    #     basedOnDependencyAnalysis: false
+    settings:
+      base:
+        MARKETING_VERSION: 1.0.0
+        CURRENT_PROJECT_VERSION: 0
+        TARGETED_DEVICE_FAMILY: 1
+        SUPPORTS_MACCATALYST: NO
+        SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD: NO
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations: UIInterfaceOrientationPortrait
+        INFOPLIST_KEY_UILaunchStoryboardName: LaunchScreen.storyboard
+    dependencies:
+      - package: Alamofire
+      - package: Swinject
+      - package: RealmSwift
+    scheme:
+      testTargets:
+        - Langkawi Unit Tests
+      gatherTestCoverageData: true
+    info:
+      path: Langkawi/Info.plist
+      properties:
+        UIAppFonts: [Font Awesome 6 Free-Solid-900.otf, Font Awesome 6 Free-Regular-400.otf, Font Awesome 6 Brands-Regular-400.otf]
+
+  Framework:
+    type: framework
+    platform: iOS
+    settings:
+      base:
+        TARGETED_DEVICE_FAMILY: 1
+        SUPPORTS_MACCATALYST: NO
+        SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD: NO
+        GENERATE_INFOPLIST_FILE: YES
+
+  UnitTests:
+    type: bundle.unit-test
+    platform: iOS
+    settings:
+      base:
+        TARGETED_DEVICE_FAMILY: 1
+        SUPPORTS_MACCATALYST: NO
+        SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD: NO
+        GENERATE_INFOPLIST_FILE: YES
+
+targets:
+  Langkawi:
+    templates: [Main]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.y7matsuo.langkawi
+        ENVIRONMENT: prod
+
+  Langkawi Dev:
+    templates: [Main]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.y7matsuo.langkawi.dev
+        ENVIRONMENT: dev
+        # ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon Dev
+
+  Langkawi Unit Tests:
+    templates: [UnitTests]
+    sources: 
+      - path: ./Langkawi Unit Tests
+    dependencies:
+      - target: Langkawi
